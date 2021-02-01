@@ -1,0 +1,18 @@
+before_script:
+  - cd src
+stages:
+  - test
+
+# job
+test:
+  stage: test
+  # 將會執行的指令碼
+  script:
+    - dotnet restore
+    - dotnet build
+  # 哪個分支會執行
+  only:
+    - master
+    #runner 註冊時的 tag，這裡指會觸發的 runner
+  tags:
+    - deploy
